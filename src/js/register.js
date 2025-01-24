@@ -10,13 +10,13 @@ document.getElementById('registerForm').addEventListener('submit', function (e) 
     return;
   }
 
-  // Guardar usuario como un objeto en localStorage
+// Guardar usuario como un objeto en localStorage
   const user = { email, username, password };
   localStorage.setItem(username, JSON.stringify(user));
 
   showAlert('Usuario registrado exitosamente!', 'success');
 
-  // Redirigir después de un pequeño retraso (opcional para que el usuario vea el mensaje)
+// Redirigir después de un pequeño retraso (opcional para que el usuario vea el mensaje)
   setTimeout(() => {
     window.location.href = 'LogIn.html';
   }, 1500); // 1.5 segundos para mostrar el mensaje antes de redirigir
@@ -26,13 +26,13 @@ document.getElementById('registerForm').addEventListener('submit', function (e) 
 function showAlert(message, type = 'success') {
   const alertContainer = document.getElementById('alertContainer');
 
-  // Estilos según el tipo de alerta
+// Estilos según el tipo de alerta
   const alertStyles = {
     success: 'bg-green-700 text-white',
     error: 'bg-red-700 text-white',
   };
 
-  // Crear contenido del alerta
+// Crear contenido del alerta
   alertContainer.innerHTML = `
     <div class="flex items-center ${alertStyles[type]} p-4 rounded-lg shadow-lg">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -43,11 +43,10 @@ function showAlert(message, type = 'success') {
       <span>${message}</span>
     </div>
   `;
-
-  // Mostrar alerta
+// Mostrar alerta
   alertContainer.classList.remove('hidden');
 
-  // Ocultar alerta después de 3 segundos
+// Ocultar alerta después de 3 segundos
   setTimeout(() => {
     alertContainer.classList.add('hidden');
   }, 3000);
