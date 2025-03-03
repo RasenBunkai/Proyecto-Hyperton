@@ -1,88 +1,160 @@
-<nav class="bg-slate-200 px-4 lg:px-6 py-2.5">
-  <div
-    class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-    <a href="/" class="flex items-center">
-      <img src="/Logo.svg" class="mr-3 h-6 sm:h-9" alt="Hyperton Logo" />
-      <span class="self-center text-xl font-light whitespace-nowrap">
-        <span class="font-semibold">Hyper</span>ton</span
-      >
-    </a>
-    <div class="flex items-center lg:order-2">
-      <form class="hidden lg:block mr-4">
-        <input
-          type="text"
-          class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-purple-500 focus:border-purple-500"
-          placeholder="Buscar..."
-        />
-        <button
-          type="submit"
-          class="bg-purple-600 text-white px-3 py-2 rounded-lg hover:bg-purple-800"
-          >Buscar</button
-        >
-      </form>
-      <a
-        href="LogIn.html"
-        class="text-purple-600 focus:ring-2 focus:ring-purple-500 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
-        >Inicia sesión</a
-      >
-      <a
-        href="register.html"
-        class="text-white bg-purple-600 hover:bg-purple-800 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
-        >Regístrate</a
-      >
+---
+const menuItems = [
+  {name: "Catálogo", active: false, icon: Catalogue, path: "/catalogo"},
+  {name: "Promociones", active: false, icon: Sparkles, path: "/promociones"},
+  {name: "Contacto", active: false, icon: Identification, path: "/contacto"},
+  {name: "FAQ", active: false, icon: Information, path: "/faq"},
+];
+
+import SearchBar from "./SearchBar.astro";
+import Hamburger from "../assets/hamburger.astro";
+import Catalogue from "../assets/catalogue.astro";
+import Sparkles from "../assets/sparkles.astro";
+import Identification from "../assets/identification.astro";
+import Information from "../assets/information.astro";
+import Login from "../assets/login.astro";
+import Register from "../assets/register.astro";
+---
+
+<nav class="bg-white border-purple-300 px-4 lg:px-6 py-2.5">
+  <!-- Mobile Header -->
+  <div class="lg:hidden flex items-center justify-between mb-4">
+    <div class="flex items-center gap-4">
       <button
-        data-collapse-toggle="mobile-menu-2"
-        type="button"
-        class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-200"
-        aria-controls="mobile-menu-2"
-        aria-expanded="false">
-        <span class="sr-only">Abrir menu principal</span>
-        <svg
-          class="w-6 h-6"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            fill-rule="evenodd"
-            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-            clip-rule="evenodd"></path>
-        </svg>
+        id="mobile-menu-button"
+        class="p-2 text-purple-600 cursor-pointer"
+        aria-label="Abrir menú">
+        <Hamburger class="w-6 h-6" />
       </button>
+      <a href="/" class="flex items-center">
+        <img
+          src="/Logo.svg"
+          class="h-9 w-9"
+          alt="Logo Hyperton"
+          loading="eager"
+          width="36"
+          height="36"
+        />
+      </a>
     </div>
-    <div
-      class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-      id="mobile-menu-2">
-      <ul
-        class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-        <li>
-          <a
-            href="index.html"
-            class="block py-2 pr-4 pl-3 text-purple-600 hover:text-purple-900 rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0"
-            aria-current="page">Inicio</a
-          >
-        </li>
-        <li>
-          <a
-            href="Catalogue.html"
-            class="block py-2 pr-4 pl-3 text-purple-600 hover:text-purple-900 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0"
-            >Catálogo</a
-          >
-        </li>
-        <li>
-          <a
-            href="Contact.html"
-            class="block py-2 pr-4 pl-3 text-purple-600 hover:text-purple-900 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0"
-            >Contacto</a
-          >
-        </li>
-        <li>
-          <a
-            href="FAQ.html"
-            class="block py-2 pr-4 pl-3 text-purple-600 hover:text-purple-900 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0"
-            >FAQ</a
-          >
-        </li>
-      </ul>
+
+    <div class="flex items-center gap-2">
+      <a
+        href="/login"
+        class="flex text-purple-600 p-2 font-medium hover:text-purple-800 focus:ring-2 focus:ring-purple-600 rounded-lg"
+        ><Login />Iniciar Sesión</a
+      >
+      <a
+        href="/registro"
+        class="flex bg-purple-600 text-white p-2 rounded-lg hover:bg-purple-800">
+        <Register />Regístrate
+      </a>
     </div>
   </div>
+
+  <!-- Desktop Header -->
+  <div class="hidden lg:flex items-center justify-between mb-4">
+    <a href="/" class="flex items-center">
+      <img
+        src="/Logo.svg"
+        class="mr-3 h-9"
+        alt="Logo Hyperton"
+        loading="lazy"
+        width="48"
+        height="48"
+      />
+      <span class="text-xl font-semibold"
+        >Hyper<span class="font-light">ton</span></span
+      >
+    </a>
+
+    <div class="flex-1 mx-8 max-w-2xl">
+      <SearchBar />
+    </div>
+
+    <div class="flex items-center gap-4">
+      <a
+        href="/login"
+        class="flex text-purple-600 hover:text-purple-800 px-4 py-2 font-medium focus:ring-2 focus:ring-purple-600 rounded-lg"
+        ><Login />Iniciar sesión</a
+      >
+      <a
+        href="/register"
+        class="flex bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-800 transition-colors">
+        <Register />Regístrate
+      </a>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden lg:hidden py-4 border-t border-purple-100">
+    <div class="mb-4 px-2">
+      <SearchBar />
+    </div>
+
+    <div class="flex flex-col gap-2 px-2">
+      {
+        menuItems.map((item) => (
+          <a
+            href={item.path}
+            class={`flex items-center gap-3 p-3 rounded-lg ${
+              item.active
+                ? "bg-purple-600 text-white"
+                : "text-purple-600 hover:bg-purple-50"
+            }`}>
+            <item.icon class="w-6 h-6" />
+            <span class="text-sm font-medium">{item.name}</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+  <!-- Desktop Navigation -->
+  <div class="hidden lg:flex gap-4 border-t border-purple-300 pt-3">
+    {
+      menuItems.map((item) => (
+        <a
+          href={item.path}
+          class={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-colors ${
+            item.active
+              ? "bg-purple-700 text-white"
+              : "text-purple-600 hover:bg-purple-50"
+          }`}>
+          <item.icon class="w-5 h-5" />
+          {item.name}
+        </a>
+      ))
+    }
+  </div>
 </nav>
+
+<script>
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  if (mobileMenuButton) {
+    mobileMenuButton.addEventListener("click", () => {
+      const menu = document.getElementById("mobile-menu");
+      if (menu) {
+        menu.classList.toggle("hidden");
+      }
+    });
+  }
+</script>
+<style>
+  /* Mejoras de transición */
+  #mobile-menu {
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+  /* Optimización para móviles */
+  @media (max-width: 1023px) {
+    nav {
+      padding: 1rem;
+    }
+    [aria-label="Search"] {
+      width: 100%;
+    }
+  }
+</style>

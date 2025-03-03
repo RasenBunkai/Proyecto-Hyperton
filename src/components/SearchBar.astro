@@ -1,0 +1,25 @@
+---
+import Search from "../assets/search.astro"
+---
+<form class="flex-1 mx-6 pt-2.5">
+  <label
+    for="default-search"
+    class="mb-2 text-sm font-medium text-gray-900 sr-only"
+    >Search</label
+  >
+  <div class="relative">
+    <input
+      type="search"
+      id="default-search"
+      class="block w-full p-3 text-sm text-gray-900 border border-purple-300 rounded-lg bg-purple-50"
+      placeholder="Buscar..."
+      required
+    />
+    <button
+      type="submit"
+      class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-purple-600 rounded-e-lg border hover:bg-purple-900 cursor-pointer">
+        <Search />
+      <span class="sr-only">Search</span>
+    </button>
+  </div>
+</form>
