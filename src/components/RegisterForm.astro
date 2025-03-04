@@ -1,3 +1,6 @@
+---
+
+---
 <div class="min-h-screen flex flex-col md:flex-row bg-slate-200">
   <!-- Sección izquierda (Formulario) -->
   <div
@@ -5,9 +8,8 @@
     <h1 class="text-3xl md:text-4xl font-semibold mb-6 text-center">
       Hyper<span class="font-light">ton</span>
     </h1>
-
-    <!-- Botón de Google -->
     <div class="w-full max-w-sm space-y-6">
+      <!-- Botón de Google -->
       <button
         aria-label="Iniciar sesión con Google"
         class="w-full flex items-center justify-center bg-purple-700 hover:bg-purple-800 py-2 px-4 rounded-lg text-white transition-colors duration-200 cursor-pointer">
@@ -29,9 +31,8 @@
           <span class="px-2 bg-slate-200 text-sm text-gray-400">o</span>
         </div>
       </div>
-
-      <!-- Formulario -->
       <form id="registerForm" class="space-y-4">
+        <!-- Campos del formulario -->
         <div>
           <label for="registerUsername" class="sr-only">Nombre de usuario</label
           >
@@ -40,9 +41,9 @@
             id="registerUsername"
             placeholder="Nombre de usuario"
             class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white"
+            required
           />
         </div>
-
         <div>
           <label for="registerEmail" class="sr-only">Correo electrónico</label>
           <input
@@ -50,28 +51,62 @@
             id="registerEmail"
             placeholder="correo electrónico"
             class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white"
+            required
           />
         </div>
-
+        <!-- Sección de contraseña con validación -->
         <div>
           <label for="registerPassword" class="sr-only">Contraseña</label>
           <input
-            id="Password"
+            id="registerPassword"
             type="password"
             name="password"
             title="Mínimo 6 caracteres con al menos una letra, un carácter especial y un número"
             pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{6,}$"
             required
             placeholder="contraseña"
-            class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white"
+            class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white peer"
           />
+          <!-- Indicador de fortaleza de contraseña -->
+          <div class="mt-2 space-y-2">
+            <div class="w-full bg-gray-200 rounded-lg overflow-hidden">
+              <div
+                id="password-strength"
+                class="h-2 transition-all duration-300"
+                role="progressbar"
+                aria-valuenow="0"
+                aria-valuemin="0"
+                aria-valuemax="100">
+              </div>
+            </div>
+            <!-- Lista de requisitos -->
+            <ul class="text-sm space-y-1 text-gray-600 peer-focus:text-black">
+              <li class="flex items-center" data-requirement="length">
+                <span class="mr-1">✗</span>
+                Mínimo 6 caracteres
+              </li>
+              <li class="flex items-center" data-requirement="letter">
+                <span class="mr-1">✗</span>
+                Al menos una letra
+              </li>
+              <li class="flex items-center" data-requirement="number">
+                <span class="mr-1">✗</span>
+                Al menos un número
+              </li>
+              <li class="flex items-center" data-requirement="special">
+                <span class="mr-1">✗</span>
+                Al menos un carácter especial
+              </li>
+            </ul>
+          </div>
         </div>
-
+        <!-- Términos y condiciones -->
         <div class="flex items-start space-x-2">
           <input
             type="checkbox"
             id="termsCheckbox"
             class="form-checkbox text-violet-500 h-4 w-4 mt-1"
+            required
           />
           <label for="termsCheckbox" class="text-sm">
             Al registrarte, aceptas nuestros
@@ -80,14 +115,13 @@
             >
           </label>
         </div>
-
         <button
           type="submit"
-          class="w-full bg-purple-600 hover:bg-purple-800 py-2 rounded-lg font-medium text-white transition-colors duration-200">
+          class="w-full bg-purple-600 hover:bg-purple-800 py-2 rounded-lg font-medium text-white transition-colors duration-200 disabled:opacity-50 cursor-pointer"
+          disabled>
           Crear cuenta
         </button>
       </form>
-
       <p class="text-center text-sm mt-4">
         ¿Ya tienes una cuenta?
         <a href="/login" class="text-purple-500 hover:underline"
@@ -96,7 +130,6 @@
       </p>
     </div>
   </div>
-
   <!-- Sección derecha (Background) -->
   <div
     class="w-full md:w-1/2 min-h-[400px] md:min-h-screen lg:flex items-center justify-center relative order-1 md:order-2 hidden sm:flex">
@@ -108,7 +141,6 @@
         </div>
       </div>
     </div>
-
     <!-- Contenido -->
     <div class="max-w-sm px-4 relative z-20 text-center">
       <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-white">
@@ -120,3 +152,48 @@
     </div>
   </div>
 </div>
+<script>
+  const registerPassword = document.getElementById("registerPassword");
+  if (registerPassword) {
+    registerPassword.addEventListener("input", function (e) {
+      const target = e.target as HTMLInputElement;
+      const password = target ? target.value : "";
+      const strengthBar = document.getElementById("password-strength") as HTMLElement | null;
+      const requirements: { [key: string]: boolean } = {
+        length: password.length >= 6,
+        letter: /[A-Za-z]/.test(password),
+        number: /\d/.test(password),
+        special: /[\W_]/.test(password),
+      };
+      // Actualizar iconos de requisitos
+      Object.keys(requirements).forEach((key) => {
+        const li = document.querySelector(`[data-requirement="${key}"]`) as HTMLElement | null;
+        if (li) {
+          const icon = li.querySelector("span") as HTMLElement | null;
+          if (icon) {
+            icon.textContent = requirements[key] ? "✓" : "✗";
+          }
+          li.classList.toggle("text-green-600", requirements[key]);
+          li.classList.toggle("text-red-600", !requirements[key]);
+        }
+      });
+      // Calcular fortaleza
+      if (strengthBar) {
+        const strength = Object.values(requirements).filter(Boolean).length * 25;
+        strengthBar.style.width = `${strength}%`;
+        strengthBar.setAttribute("aria-valuenow", strength.toString());
+        strengthBar.classList.toggle("bg-red-500", strength < 50);
+        strengthBar.classList.toggle(
+          "bg-yellow-500",
+          strength >= 50 && strength < 75
+        );
+        strengthBar.classList.toggle("bg-green-500", strength >= 75);
+      }
+      // Habilitar botón si todos los requisitos se cumplen
+      const submitButton = document.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+      if (submitButton) {
+        submitButton.disabled = !Object.values(requirements).every(Boolean);
+      }
+    });
+  }
+</script>
