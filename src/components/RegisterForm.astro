@@ -1,0 +1,122 @@
+<div class="min-h-screen flex flex-col md:flex-row bg-slate-200">
+  <!-- Sección izquierda (Formulario) -->
+  <div
+    class="w-full md:w-1/2 flex flex-col items-center justify-center p-6 lg:p-12 order-2 md:order-1">
+    <h1 class="text-3xl md:text-4xl font-semibold mb-6 text-center">
+      Hyper<span class="font-light">ton</span>
+    </h1>
+
+    <!-- Botón de Google -->
+    <div class="w-full max-w-sm space-y-6">
+      <button
+        aria-label="Iniciar sesión con Google"
+        class="w-full flex items-center justify-center bg-purple-700 hover:bg-purple-800 py-2 px-4 rounded-lg text-white transition-colors duration-200 cursor-pointer">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+          class="h-5 w-5 mr-2"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+        />
+        <span class="truncate">Inicia sesión con Google</span>
+      </button>
+      <!-- Separador -->
+      <div class="relative">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-gray-300"></div>
+        </div>
+        <div class="relative flex justify-center">
+          <span class="px-2 bg-slate-200 text-sm text-gray-400">o</span>
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <form id="registerForm" class="space-y-4">
+        <div>
+          <label for="registerUsername" class="sr-only">Nombre de usuario</label
+          >
+          <input
+            type="text"
+            id="registerUsername"
+            placeholder="Nombre de usuario"
+            class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white"
+          />
+        </div>
+
+        <div>
+          <label for="registerEmail" class="sr-only">Correo electrónico</label>
+          <input
+            type="email"
+            id="registerEmail"
+            placeholder="correo electrónico"
+            class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white"
+          />
+        </div>
+
+        <div>
+          <label for="registerPassword" class="sr-only">Contraseña</label>
+          <input
+            id="Password"
+            type="password"
+            name="password"
+            title="Mínimo 6 caracteres con al menos una letra, un carácter especial y un número"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{6,}$"
+            required
+            placeholder="contraseña"
+            class="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 bg-white"
+          />
+        </div>
+
+        <div class="flex items-start space-x-2">
+          <input
+            type="checkbox"
+            id="termsCheckbox"
+            class="form-checkbox text-violet-500 h-4 w-4 mt-1"
+          />
+          <label for="termsCheckbox" class="text-sm">
+            Al registrarte, aceptas nuestros
+            <a href="#" class="text-purple-500 hover:underline"
+              >términos de uso</a
+            >
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-purple-600 hover:bg-purple-800 py-2 rounded-lg font-medium text-white transition-colors duration-200">
+          Crear cuenta
+        </button>
+      </form>
+
+      <p class="text-center text-sm mt-4">
+        ¿Ya tienes una cuenta?
+        <a href="/login" class="text-purple-500 hover:underline"
+          >Inicia sesión aquí</a
+        >
+      </p>
+    </div>
+  </div>
+
+  <!-- Sección derecha (Background) -->
+  <div
+    class="w-full md:w-1/2 min-h-[400px] md:min-h-screen lg:flex items-center justify-center relative order-1 md:order-2 hidden sm:flex">
+    <!-- Overlay -->
+    <div class="absolute inset-0 z-10">
+      <div class="relative h-full w-full bg-purple-700/60">
+        <div
+          class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]">
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenido -->
+    <div class="max-w-sm px-4 relative z-20 text-center">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-white">
+        Explora el mundo de los videojuegos con Hyperton
+      </h2>
+      <p class="text-gray-200 md:text-gray-300">
+        Únete a nuestra comunidad de jugadores y descubre los mejores títulos
+      </p>
+    </div>
+  </div>
+</div>
