@@ -1,74 +1,111 @@
 ---
-
+import GoogleLogin from "./GoogleLogin.astro";
+import User from "../assets/user.astro";
+import Key from "../assets/key.astro";
 ---
-<div class="h-screen flex items-center justify-center bg-violet-300 px-4">
-  <div class="bg-white shadow-lg rounded-lg p-6 max-w-sm w-full my-6">
-    <div class="text-center mb-6">
-      <img src="../img/Hyperton.png" alt="Hyperton Logo" class="w-16 mx-auto" />
-      <h1 class="text-4xl font-semibold mt-4">
-        Hyper<span class="font-light">ton</span>
-      </h1>
-    </div>
-    <h2 class="text-2xl font-semibold mb-4 text-center">Inicia sesión</h2>
-    <form id="loginForm">
-      <label for="email" class="block text-sm font-medium mb-2"
-        >Correo electrónico</label
-      >
-      <input
-        id="email"
-        type="email"
-        aria-label="Correo electrónico"
-        class="block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500"
-        placeholder="correo@gmail.com"
-      />
-      <label for="password" class="block text-sm font-medium mt-4 mb-2"
-        >Contraseña</label
-      >
-      <input
-        id="password"
-        type="password"
-        aria-label="Contraseña"
-        class="block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500"
-        placeholder="********"
-      />
-      <div id="errorMessage" class="hidden mt-4 text-red-600"></div>
-      <div class="flex items-center justify-between mt-4">
-        <label class="flex items-center">
+
+<div class="min-h-screen flex flex-col md:flex-row bg-slate-200">
+  <!-- Sección izquierda (Formulario) -->
+  <div
+    class="w-full md:w-1/2 flex flex-col items-center justify-center p-6 lg:p-12 order-2 md:order-1">
+    <h1 class="text-3xl md:text-4xl font-semibold mb-6 text-center">
+      Hyper<span class="font-light">ton</span>
+    </h1>
+    <div class="w-full max-w-sm space-y-6">
+      <!-- Botón de Google -->
+      <GoogleLogin />
+      <!-- Separador -->
+      <div class="relative">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-gray-300"></div>
+        </div>
+        <div class="relative flex justify-center">
+          <span class="px-2 bg-slate-200 text-sm text-gray-400">o</span>
+        </div>
+      </div>
+      <form id="registerForm" class="space-y-4 w-full">
+        <!-- Campos del formulario -->
+        <label for="registerUsername" class="sr-only">Nombre de usuario</label>
+        <div class="relative">
+          <div
+            class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+            <User />
+          </div>
+          <input
+            type="text"
+            id="registerUsername"
+            class="bg-white border border-purple-300 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 block w-full ps-10 p-2.5"
+            placeholder="Nombre de Usuario"
+            required
+          />
+        </div>
+        <div>
+          <label for="registerPassword" class="sr-only">Contraseña</label>
+          <div class="relative">
+            <div
+              class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+              <Key />
+            </div>
+            <input
+              id="registerPassword"
+              type="password"
+              name="password"
+              required
+              placeholder="Contraseña"
+              class="bg-white border border-purple-300 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 block w-full ps-10 p-2.5"
+            />
+          </div>
+        </div>
+        <!-- Términos y condiciones -->
+        <div class="flex space-x-2">
           <input
             type="checkbox"
-            class="form-checkbox h-4 w-4 text-purple-500"
+            id="termsCheckbox"
+            class="items-start form-checkbox text-violet-500 h-4 w-4 mt-1"
+            required
           />
-          <span class="ml-2 text-sm">Recuérdame</span>
-        </label>
-        <a
-          href="Restaurar cuenta.html"
-          class="text-sm text-purple-600 hover:underline">
-          ¿Olvidaste tu contraseña?
-        </a>
-      </div>
-      <button
-        type="submit"
-        class="mt-6 w-full bg-purple-600 hover:bg-purple-800 text-white py-2 rounded-lg font-medium">
-        Iniciar sesión
-      </button>
-      <p class="text-sm text-gray-400 text-center my-2">o</p>
-      <div class="flex space-x-4 mb-6 items-center justify-center">
+          <label for="termsCheckbox" class="text-sm">
+            Recordar contraseña
+          </label>
+          <a
+            href="#"
+            class="text-purple-500 hover:underline text-sm ml-auto"
+            target="_blank">Olvidé mi contraseña</a
+          >
+        </div>
         <button
-          class="flex items-center justify-center bg-purple-600 hover:bg-purple-800 py-2 px-4 rounded-lg text-white">
-          <img
-            src="https://www.svgrepo.com/show/355037/google.svg"
-            class="h-5 w-5 mr-2"
-            alt="Google"
-          />
-          Inicia sesión con Google
+          type="submit"
+          class="w-full bg-purple-500 hover:bg-purple-700 py-2 rounded-lg font-medium text-white transition-colors duration-200 cursor-pointer">
+          Iniciar Sesión
         </button>
+      </form>
+      <p class="text-center text-sm mt-4">
+        ¿No tienes una cuenta?
+        <a href="/register" class="text-purple-500 hover:underline"
+          >registrate aquí</a
+        >
+      </p>
+    </div>
+  </div>
+  <!-- Sección derecha (Background) -->
+  <div
+    class="w-full md:w-1/2 min-h-[400px] md:min-h-screen lg:flex items-center justify-center relative order-1 md:order-2 hidden sm:flex">
+    <!-- Overlay -->
+    <div class="absolute inset-0 z-10">
+      <div class="relative h-full w-full bg-purple-700/60">
+        <div
+          class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]">
+        </div>
       </div>
-    </form>
-    <p class="text-sm text-gray-600 mt-4 text-center">
-      ¿No tienes una cuenta?
-      <a href="register.html" class="text-purple-600 hover:underline"
-        >Regístrate</a
-      >
-    </p>
+    </div>
+    <!-- Contenido -->
+    <div class="max-w-sm px-4 relative z-20 text-center">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-white">
+        Explora el mundo de los videojuegos con Hyperton
+      </h2>
+      <p class="text-gray-200 md:text-gray-300">
+        Únete a nuestra comunidad de jugadores y descubre los mejores títulos
+      </p>
+    </div>
   </div>
 </div>

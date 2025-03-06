@@ -1,18 +1,18 @@
 ---
 import Layout from "./Layout.astro";
 const {frontmatter} = Astro.props;
-const {title} = frontmatter;
+const {title, author, pubDate, description} = frontmatter;
 import Footer from "../components/Footer.astro";
 ---
 
 <Layout title={title}>
   <header class="bg-purple-200 p-4 text-center">
-    <h1 class="text-3xl font-bold">{frontmatter.title}</h1>
-    <h3 class="text-xl text-gray-600">Escrito por: {frontmatter.author}</h3>
-    <p class="text-gray-500">Publicado el: {frontmatter.pubDate.toString().slice(0, 10)}</p>
-    <p class="text-gray-700 mt-2">{frontmatter.description}</p>
+    <h1 class="text-3xl font-bold">{title}</h1>
+    <h3 class="text-xl text-gray-600">Escrito por: {author}</h3>
+    <p class="text-gray-500">Publicado el: {pubDate.toString().slice(0, 10)}</p>
+    <p class="text-gray-700 mt-2">{description}</p>
   </header>
-  <main class="p-8 max-w-4xl mx-auto">
+  <main class="p-8 max-w-4xl mx-auto text-justify">
     <slot />
   </main>
   <Footer />

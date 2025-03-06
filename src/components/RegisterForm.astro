@@ -1,5 +1,5 @@
 ---
-import GoogleLogin from "../components/GoogleLogin.astro";
+import GoogleLogin from "./GoogleLogin.jsx";
 import User from "../assets/user.astro";
 import Mail from "../assets/mail.astro";
 import Key from "../assets/key.astro";
@@ -116,8 +116,10 @@ import Key from "../assets/key.astro";
           />
           <label for="termsCheckbox" class="text-sm">
             Al registrarte, aceptas nuestros
-            <a href="post/TerminosUso" class="text-purple-500 hover:underline"
-              >términos de uso</a
+            <a
+              href="post/TerminosUso"
+              class="text-purple-500 hover:underline"
+              target="_blank">términos de uso</a
             >
           </label>
         </div>
