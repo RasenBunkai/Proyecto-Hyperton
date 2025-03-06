@@ -1,15 +1,10 @@
 ---
+layout: "../../layouts/BlogPostLayout.astro"
 title: "Términos de Uso"
 description: "Estos son los términos y condiciones de nuestro ecommerce de videojuegos."
-layout: "../../layouts/BlogPostLayout.astro"
+pubDate: 2025-03-04
 author: "Emiliano Salgado Mtz"
-tags: ["ecommerce", "videojuegos", "terminos"]
-date: "04/Marzo/2025"
----
-
-# Términos de Uso
-
-Estos son los términos y condiciones de nuestro
+tags: ["ecommerce", "videojuegos", "terminos y condiciones"]
 ---
 
 # Términos y Condiciones
@@ -38,4 +33,4 @@ Todos los derechos de los videojuegos y marcas pertenecen a sus respectivos due�
 
 Nos reservamos el derecho de modificar estos términos en cualquier momento. Te notificaremos cualquier cambio importante.
 
-Si tienes dudas, contáctanos en [emilianosalgado553@gmail.com](mailto:emilianosalgado553@gmail.com).
+Si tienes dudas, contáctanos en **[emilianosalgado553@gmail.com](mailto:emilianosalgado553@gmail.com)**.
