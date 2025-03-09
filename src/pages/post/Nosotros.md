@@ -15,4 +15,4 @@ Nuestra misión es proporcionar una plataforma segura y confiable donde los game
 
 <h3 class="text-xl text-gray-700 font-semibold">Nuestro Equipo</h3>
 
-Nuestro equipo está compuesto por profesionales con amplia experiencia en la industria de los videojuegos y el comercio electrónico. Trabajamos arduamente para asegurarnos de que cada cliente tenga una experiencia satisf
+Nuestro equipo está compuesto por profesionales con amplia experiencia en la industria de los videojuegos y el comercio electrónico. Trabajamos arduamente para asegurarnos de que cada cliente tenga una experiencia satisfactoria.

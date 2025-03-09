@@ -1,12 +1,11 @@
 ---
 const footerItems = [
-  {name: "About", href: "Nosotros"},
-  {name: "Premium", href: "#"},
-  {name: "Campaigns", href: "#"},
-  {name: "Blog", href: "#"},
-  {name: "Affiliate Program", href: "#"},
+  {name: "Nosotros", href: "../post/Nosotros"},
+  {name: "Política de Privacidad", href: "../post/PoliticaPrivacidad"},
+  {name: "FAQ", href: "../post/FAQ"},
+  {name: "Reembolsos y Devoluciones", href: "../post/ReembolsoDevolucion"},
+  {name: "Blog", href: "../post/Blog"},
 ];
-
 import Image from "astro/components/Image.astro";
 ---
 
@@ -18,7 +17,7 @@ import Image from "astro/components/Image.astro";
       class="mx-auto w-6 h-w-6"
       width={24}
       height={24}
-      loading="lazy"
+      loading="eager"
     />
     <a
       href="/"
@@ -43,8 +42,8 @@ import Image from "astro/components/Image.astro";
       }
     </ul>
     <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
-      >© 2023-2025 <a href="/" class="hover:underline">Hyperton™</a>. All
-      Rights Reserved.</span
+      >© 2023-2025 <a href="/" class="hover:underline">Hyperton™</a>.Todos los
+      derechos reservados.</span
     >
   </div>
 </footer>
