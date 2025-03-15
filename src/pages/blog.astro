@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+const allPosts = await Astro.glob("../pages/post/*.md");
+---
+
+<Layout title="Blog">
+  <header class="bg-purple-200 p-4 text-center">
+    <h1 class="text-3xl font-bold">Blog</h1>
+    <h3 class="text-xl text-gray-700 mt-2">
+      Encuentra la entrada a todos nuestros blogs y noticias.
+    </h3>
+  </header>
+  <ul class="flex items-center justify-center mt-4 gap-5">
+    {
+      allPosts.map((post) => (
+        <li class="mb-2">
+          <a
+            href={post.url}
+            class="px-2 py-1.5 text-sm font-semibold text-gray-800 bg-purple-200 hover:bg-purple-300 border border-gray-200 rounded-lg">
+            {post.frontmatter.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  
+  <Footer />
+</Layout>
