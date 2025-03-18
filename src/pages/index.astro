@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
-import GameCard from "../components/GameCard.astro";
+import GameCard from "../components/GameCard.jsx";
 ---
 
 <Layout title="Inicio">
@@ -18,11 +18,8 @@ import GameCard from "../components/GameCard.astro";
           </h2>
         </div>
       </div>
-      <div
-        class="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
-        <GameCard />
-      </div>
-      <div class="w-full text-center">
+        <GameCard client:load />
+        <div class="w-full text-center">
         <button
           type="button"
           class="rounded-lg border border-purple-300 bg-white px-5 py-2.5 text-sm font-medium text-purple-700 hover:bg-gray-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-purple-300"
